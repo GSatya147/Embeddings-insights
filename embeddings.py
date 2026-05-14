@@ -58,18 +58,18 @@ def compare_embeddings(cos_local, cos_gemini):
     
     assert cos_local.shape == cos_gemini.shape, "DataFrames must have the same shape"
 
-    idx = np.triu_indices(cos_local.shape[0], k=1)
-    rows, cols = idx[0] + 1, idx[1] + 1
+    ids = np.triu_indices(cos_local.shape[0], k=1)
+    rows, cols = ids[0] + 1, ids[1] + 1
 
     df = pd.DataFrame({
-        "sentence_i":      rows,
-        "sentence_j":      cols,
-        "cos_local":       cos_local.values[idx],
-        "cos_gemini":      cos_gemini.values[idx],
+        "sentence_i": rows,
+        "sentence_j": cols,
+        "cos_local": cos_local.values[ids],
+        "cos_gemini": cos_gemini.values[ids],
     })
 
-    df["divergence"]      = (df["cos_local"] - df["cos_gemini"]).abs() # How much they disagree
-    df["bias"]            = df["cos_local"] - df["cos_gemini"]   # +ve = local more generous gives who's systematically off
+    df["divergence"] = (df["cos_local"] - df["cos_gemini"]).abs() # How much they disagree
+    df["bias"] = df["cos_local"] - df["cos_gemini"]   # +ve = local more generous gives who's systematically off
     df["consensus_floor"] = df[["cos_local", "cos_gemini"]].min(axis=1) # What we can trust without picking a winner
 
     return df.sort_values("divergence", ascending=False).reset_index(drop=True)
