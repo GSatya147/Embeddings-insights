@@ -3,7 +3,7 @@
 
 - **Embedding model:** A specialised transformer which trained explicitly to turn tokens into vector embeddings
 
-- **Vector embeddings:** Vector/list of co-ordinates of a word or position of a word in the implicit/imaginary high dimensional space 
+- **Vector embeddings/ Embeddings:** Vector/list of co-ordinates of a word or position of a word in the implicit/imaginary high dimensional space 
 
 - **Embedding space:** A high level space which captures the semantic meaning and context where each direction reveals the context, similar words are tend to cluster together. (Mind the space is just the sake of understanding there is no explicit storage here and the embeddins are not samrt enough to create and place the words in the sense of direction, they are just numericals and and when we try to arrange the positions simialar words tend to cluster we later name the understanding direction convention.)
 
