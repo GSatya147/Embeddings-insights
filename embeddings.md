@@ -43,4 +43,5 @@ But realistically in practice embeddings models tends to produce positive vector
 **Note:** minimum of both cos's cus whom we pick and set as a floor, cus even if one model has 0.9 and other has 0.2 we can only say reliably that it's 0.2 similar, which gives us a floor to work with. say if both models agree with 0.78 we can do party haha
 
 #### Insights
+- I used sentence-transformers local model with 384 dimensions output and gemini api model with 768 dimensions
 - Multiple runs on different sentences show that larger model i.e more dimensions doesn't always mean, it's good.
