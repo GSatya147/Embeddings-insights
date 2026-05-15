@@ -46,3 +46,4 @@ But realistically in practice embeddings models tends to produce positive vector
 - I used sentence-transformers local model with 384 dimensions output and gemini api model with 768 dimensions.
 - Multiple runs on different sentences show that larger model i.e more dimensions doesn't always mean, it's good.
 - Larger model are often not so sensitive to similar looking words with different contexts cus larger models zoom out the fine-grain space. 
+- Smaller model is often sensitive to those type of words due to lack of more knowledge space.
