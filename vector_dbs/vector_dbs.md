@@ -35,4 +35,6 @@
 - But it has it's own limitations like 95% accuracy due to vector DBs instead of depending on the model's attention mechanism, which further decreases the accuracy once the model responses.  
 
 #### RAG
-`RAG: documents (large) → chunking → embedding model → vector embeddings → vector DBs (metadata + embeddings) → re-ranking → user prompt → approx similar data retrieval`
+```bash
+RAG: documents (large) → chunking → embedding model → vector embeddings → vector DBs (metadata + embeddings) → re-ranking → user prompt → approx similar data retrieval`
+```

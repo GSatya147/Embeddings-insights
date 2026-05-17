@@ -9,7 +9,7 @@
 
 #### Mental Model:
 ```bash
-user -> Embedding model -> (input) word/token -> (Embedding process) -> (output) Vector embeddings -> positioning the coordinates -> creates -> high level dimension called Embedding space
+user → Embedding model → (input) word/token → (Embedding process) → (output) Vector embeddings → positioning the coordinates → creates → high level dimension called Embedding space
 ```
 
 #### Similarity:
@@ -22,9 +22,9 @@ Hence, cosine_similarity is used, cosine based similarity i.e.
 this reveals the radians or angle between the vectors, well..not clearly. Do you remember the cos table values, cos range is [-1,1] thats what cosine_similarity actually reveals. 
 
 ```bash
-closer 0        -> perpendicular
-closer to 1     -> Same direction
-closer to -1    -> opposite direction
+closer 0        → perpendicular
+closer to 1     → Same direction
+closer to -1    → opposite direction
 ```
 
 But realistically in practice embeddings models tends to produce positive vectors, cus two words in a sense would never be truly opposite there will be a sense of direction which will/can capture a similarity, say `hot` x `cold` but they can be placed in same direction of `temperature`, right?
@@ -48,5 +48,6 @@ But realistically in practice embeddings models tends to produce positive vector
 - Larger model are often not so sensitive to similar looking words with different contexts cus larger models zoom out the fine-grain space. 
 - Smaller model is often sensitive to those type of words due to lack of more knowledge space.
 - The eval metrics shows most optimal dimensions is still unkown for our natural language.
+
 
 
