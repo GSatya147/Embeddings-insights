@@ -38,3 +38,4 @@
 ```bash
 RAG: documents (large) → chunking → embedding model → vector embeddings → vector DBs (metadata + embeddings) → re-ranking → user prompt → approx similar data retrieval`
 ```
+
