@@ -20,6 +20,7 @@
 
 3. How data is stored in a vector Db?  
 - Vector Dbs always store vector embeddgings alongside the metadata (time or year, word count, index position, Source) instead of pure vectors.  
+
 **Why?**  
 - *Retrieval of the original content:* The vector is a pointer, not the thing. When ChromaDB returns a result, you need the original text to show the user.  That text lives in the metadata (or ChromaDB's document store, same idea).  
 - *Structured filtering before or after vector search:* This is huge. Imagine a legal document search tool. User asks "find clauses about liability." You could return the 5 most semantically similar chunks but what if the user only wants clauses from contracts signed after 2023? Vector similarity has no concept of dates. Metadata filtering does, You say: search by similarity AND filter where year >= 2023. This is called filtered ANN search and it's a core feature of every production vector DB.  
