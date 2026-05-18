@@ -48,6 +48,3 @@ But realistically in practice embeddings models tends to produce positive vector
 - Larger model are often not so sensitive to similar looking words with different contexts cus larger models zoom out the fine-grain space. 
 - Smaller model is often sensitive to those type of words due to lack of more knowledge space.
 - The eval metrics shows most optimal dimensions is still unkown for our natural language.
-
-
-
