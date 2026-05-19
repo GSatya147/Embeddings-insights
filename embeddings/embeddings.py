@@ -138,3 +138,4 @@ if __name__ == "__main__":
         "display.max_rows", None, "display.max_columns", None, "display.width", None
     ):
         print(insights)
+
