@@ -49,3 +49,4 @@ But realistically in practice embeddings models tends to produce positive vector
 - Smaller model is often sensitive to those type of words due to lack of more knowledge space.
 - The eval metrics shows most optimal dimensions is still unkown for our natural language.
 
+
