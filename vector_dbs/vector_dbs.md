@@ -37,6 +37,7 @@
 
 #### Vector DBs
 ![](vectors_dbs.png)
+Read more: `https://www.pinecone.io/learn/vector-database/`
 
 #### RAG
 ```bash
