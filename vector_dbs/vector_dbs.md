@@ -39,9 +39,10 @@
 ![](vectors_dbs.png)
 Read more: `https://www.pinecone.io/learn/vector-database/`
 
+#### How Vector DBs work
+
+
 #### RAG
 ```bash
 RAG: documents (large) → chunking → embedding model → vector embeddings → vector DBs (metadata + embeddings) → re-ranking → user prompt → approx similar data retrieval`
 ```
-
-
