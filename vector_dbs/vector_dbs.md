@@ -40,7 +40,7 @@
 Read more: `https://www.pinecone.io/learn/vector-database/`
 
 #### How Vector DBs work
-
+![](vector_dbs_working.png)
 
 #### RAG
 ```bash
