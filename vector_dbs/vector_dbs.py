@@ -44,3 +44,9 @@ query_embedding = client.models.embed_content(
                     config=types.EmbedContentConfig(output_dimensionality=3072)
                 )
 
+query_result = collections.query(
+                query_embeddings=[[query_embedding.embeddings[0].values]],
+                n_results=3,
+            )
+
+print(query_result)
