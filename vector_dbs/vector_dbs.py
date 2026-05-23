@@ -6,11 +6,17 @@ import chromadb
 
 load_dotenv()
 
+sentences = [
+    "I'm a good guy",
+    "Everyone calls me nice",
+    "New delhi is India's capital",
+]
+
 embedding_client = genai.Client()
 
 result = embedding_client.models.embed_content(
                 model="gemini-embedding-001",
-                contents=["Hi, i'm satya"],
+                contents=sentences,
                 config=types.EmbedContentConfig(output_dimensionality=3072)
             )
 
@@ -22,5 +28,6 @@ chroma_client = chromadb.PersistentClient(path="./chroma_db")
 collections = chroma_client.get_or_create_collection(name="my_collection")
 
 collections.add(
-    # index=[]
+    ids=[f"doc_{i+1}" for i in range(len(result.embeddings))],
+    embeddings=[e.values for e in result.embeddings]
 )
