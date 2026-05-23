@@ -4,6 +4,8 @@ from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 import chromadb
 
+import os
+
 load_dotenv()
 
 sentences = [
@@ -12,15 +14,15 @@ sentences = [
     "New delhi is India's capital",
 ]
 
-embedding_client = genai.Client()
+client = genai.Client()
 
-result = embedding_client.models.embed_content(
-                model="gemini-embedding-001",
+result = client.models.embed_content(
+                model=os.getenv("MODEL"),
                 contents=sentences,
                 config=types.EmbedContentConfig(output_dimensionality=3072)
             )
 
-print(result.embeddings[0].values)
+# print(result.embeddings[0].values)
 
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 
@@ -31,3 +33,14 @@ collections.add(
     ids=[f"doc_{i+1}" for i in range(len(result.embeddings))],
     embeddings=[e.values for e in result.embeddings]
 )
+
+# Query
+query = input(">> ")
+
+# Query embedding
+query_embedding = client.models.embed_content(
+                    model=os.gentenv("MODEL"),
+                    contents=[query],
+                    config=types.EmbedContentConfig(output_dimensionality=3072)
+                )
+
