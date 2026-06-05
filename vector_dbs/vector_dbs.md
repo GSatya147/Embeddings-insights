@@ -47,3 +47,7 @@ Read more: `https://www.pinecone.io/learn/vector-database/`
 ```bash
 RAG: documents (large) → chunking → embedding model → vector embeddings → vector DBs (metadata + embeddings) → re-ranking → user prompt → approx similar data retrieval`
 ```
+
+#### Profound Insights
+1. Bruted the chunking through `split(".")`, but proved to be bad chunking due to confusion between decimal "." and real period ".".
+2. Chunking effects the semantic meaning. Choosing right chunking is essential.
