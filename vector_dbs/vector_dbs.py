@@ -39,14 +39,20 @@ query = input(">> ")
 
 # Query embedding
 query_embedding = client.models.embed_content(
-                    model=os.gentenv("MODEL"),
+                    model=os.getenv("MODEL"),
                     contents=[query],
                     config=types.EmbedContentConfig(output_dimensionality=3072)
                 )
 
-query_result = collections.query(
-                query_embeddings=[[query_embedding.embeddings[0].values]],
-                n_results=3,
-            )
+list_1: list = [query_embedding.embeddings[0].values]
+print(type(list_1))
+
+try:
+    query_result = collections.query(
+                    query_embeddings=[list_1],
+                    n_results=3,
+                )
+except Exception as e:
+    print(e)
 
 print(query_result)
