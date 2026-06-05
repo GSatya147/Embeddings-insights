@@ -8,6 +8,8 @@ from pinecone import ServerlessSpec
 load_dotenv()
 key=os.getenv("PINECONE_API_KEY")
 
+UPSERT = False
+
 with open("./data.json", "r") as f:
     data_json = json.load(f)
 
@@ -37,5 +39,24 @@ if not pc.has_index(index_name):
     )
 
 index = pc.Index(index_name)
-index.upsert(vectors=data_dict_field, namespace="honey-badger-wiki")
 
+if UPSERT:
+    index.upsert(vectors=data_dict_field, namespace="honey-badger-wiki")
+
+query = input(">> ")
+
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+query_embedding = model.encode(query)
+
+query_results = index.query(
+    namespace="honey-badger-wiki",
+    vector= query_embedding, 
+    top_k=3,
+    include_metadata=True,
+    include_values=True
+)
+
+for match in query_results.matches:
+    print(f"Score: {match.score:.2f}")
+    print(f"Content: {match.metadata["content"]}")
+    print(f"{'-' * 50}")
