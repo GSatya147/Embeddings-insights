@@ -30,7 +30,9 @@ collections = chroma_client.get_or_create_collection(name="my_collection")
 
 collections.add(
     ids=[f"doc_{i+1}" for i in range(len(result.embeddings))],
-    embeddings=[e.values for e in result.embeddings]
+    embeddings=[e.values for e in result.embeddings],
+    documents=sentences,
+    metadatas=[{"source": "manual", "index": i+1} for i in range(len(result.embeddings))],
 )
 
 # Query
