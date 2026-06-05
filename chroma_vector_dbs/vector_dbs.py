@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import chromadb
 
 import os
+import json
 
 load_dotenv()
 
@@ -66,3 +67,10 @@ try:
 
 except Exception as e:
     print(e)
+
+data = collections.get(include=["documents", "embeddings", "metadatas"])
+data_copy = data
+data_copy["embeddings"] = [e.tolist() for e in data["embeddings"]]
+
+with open("./data.json", "w") as f:
+    json.dump(data_copy, f)
