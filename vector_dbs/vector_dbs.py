@@ -12,6 +12,7 @@ sentences = [
     "I'm a good guy",
     "Everyone calls me nice",
     "New delhi is India's capital",
+    "my first name is nice",
 ]
 
 client = genai.Client()
@@ -21,8 +22,6 @@ result = client.models.embed_content(
                 contents=sentences,
                 config=types.EmbedContentConfig(output_dimensionality=3072)
             )
-
-# print(result.embeddings[0].values)
 
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 
@@ -45,14 +44,13 @@ query_embedding = client.models.embed_content(
                 )
 
 list_1: list = [query_embedding.embeddings[0].values]
-print(type(list_1))
 
 try:
     query_result = collections.query(
-                    query_embeddings=[list_1],
+                    query_embeddings=list_1,
                     n_results=3,
                 )
+    print(query_result)
+
 except Exception as e:
     print(e)
-
-print(query_result)
